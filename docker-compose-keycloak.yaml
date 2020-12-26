@@ -1,0 +1,21 @@
+version: "2"
+
+networks:
+  gokeycloak:
+
+# https://hub.docker.com/r/jboss/keycloak/tags?page=1&ordering=last_updated
+# docker run :
+# start the image docker run -p 8000:8080 --name keycloak -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin jboss/keycloak      
+
+services:
+  jboss_keycloak12:
+    image: jboss/keycloak:12.0.0
+    environment:
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+    ports:
+      - "8000:8080"
+    container_name: jboss_keycloak12
+    networks:
+      - gokeycloak
+
